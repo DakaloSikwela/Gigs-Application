@@ -2,8 +2,8 @@
  import React from 'react';
  import tw from "tailwind-react-native-classnames";
  import Map from '../components/Map';
- import NavigateCard from '../components/Map';
- import RideOptionsCard from '../components/Map';
+ import NavigateCard from '../components/NavigateCard';
+ import RideOptionsCard from '../components/RideOptionsCard';
  import MapView from 'react-native-maps';
 import { createStackNavigator } from '@react-navigation/stack';
  
@@ -39,6 +39,6 @@ import { createStackNavigator } from '@react-navigation/stack';
    )
  }
  
- export default MapScreen
+ export default MapScreen;
  
  const styles = StyleSheet.create({})

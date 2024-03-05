@@ -27,7 +27,7 @@ const data = [
 
 const NavOptions = () => {
   const navigation = useNavigation();
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const origin = useSelector(selectOrigin);
 
   return (

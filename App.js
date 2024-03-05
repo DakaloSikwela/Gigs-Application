@@ -5,13 +5,15 @@ import { Provider } from "react-redux";
 import { store } from "./store";
 import HomeScreen from "./screens/HomeScreen";
 import MapScreen from "./screens/components/MapScreen";
+
 //import NavSlice from "./slices/navSlice";
+
 import NavOptions from "./screens/components/NavOptions";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import navSlice, {
+import {navSlice, 
   setOrigin,
   setDestination,
   setTravelTimeInformation,
