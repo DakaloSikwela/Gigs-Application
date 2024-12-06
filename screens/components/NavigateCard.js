@@ -7,6 +7,9 @@ import { useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 
 import { setDestination } from "..//..//slices/navSlice";
+import NavFavourites from "./NavFavourites";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { Icon } from "react-native-elements";
 
 const NavigateCard = () => {
   const dispatch = useDispatch();
@@ -15,39 +18,61 @@ const NavigateCard = () => {
   return (
     <SafeAreaView style={tw`bg-white flex-1`}>
       <Text style={tw`text-center py-5 text-xl`}>Good Morning</Text>
-      <View style={tw`border-t border-gray-200 flex-shrink`}></View>
-      <View>
-        <GooglePlacesAutocomplete
-          placeholder="Where to?"
-          styles={toInputBoxStyles}
-          fetchDetails={true}
-          returnKeyType={"search"}
-          minLength={2}
-          onPress={(data, details = null) => {
-            dispatch(
-              setDestination({
-                location: details.geometry.location,
-                description: data.description,
-              })
-            );
+      <View style={tw`border-t border-gray-200 flex-shrink`}>
+        <View>
+          <GooglePlacesAutocomplete
+            placeholder="Where to?"
+            styles={toInputBoxStyles}
+            fetchDetails={true}
+            returnKeyType={"search"}
+            minLength={2}
+            onPress={(data, details = null) => {
+              dispatch(
+                setDestination({
+                  location: details.geometry.location,
+                  description: data.description,
+                })
+              );
 
-            navigation.navigate("RideOptionsCard");
-          }}
-          enablePoweredByContainer={false}
-          query={{
-            key: GOOGLE_MAPS_APIKEY,
-            language: "en",
-          }}
-          nearbyPlacesAPI="GooglePlacesSearch"
-          debounce={400}
-        />
+              navigation.navigate("RideOptionsCard");
+            }}
+            enablePoweredByContainer={false}
+            query={{
+              key: "AIzaSyCZwE7MvAXfeGMauJKadh-7IVo2-AuJD7g",
+              language: "en",
+            }}
+            nearbyPlacesAPI="GooglePlacesSearch"
+            debounce={400}
+          />
+        </View>
+
+        <NavFavourites />
+      </View>
+      <View
+        style={tw`flex-row bg-white justify-evenly py-2 mt-auto border-t boder-gray-100`}
+      >
+        <TouchableOpacity
+          onPress={() => navigation.navigate("RideOptionsCard")}
+          style={tw`flex flex-row justify-between bg-black w-24 px-4 py-3 rounded-full`}
+        >
+          <Icon name="car" type="font-awesome" color="white" size={16} />
+          <Text style={tw`text-white text-center`}>Gigs</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() => navigation.navigate("RideOptionsCard")}
+          style={tw`flex flex-row  w-24 px-4 py-3 rounded-full`}
+        >
+          <Icon name="camera" type="ionicon" color="black" size={16} />
+          <Text style={tw` text-center`}>pics</Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
 };
 
 export default NavigateCard;
-
+x
 const toInputBoxStyles = StyleSheet.create({
   container: {
     backgroundColor: "white",
